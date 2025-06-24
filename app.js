@@ -10,32 +10,30 @@ import { Server } from 'socket.io';
 const app = express();
 app.use(express.json());
 
-// Connect to DB
 connectDB();
 
-// Whitelist from config
+// CORS
 const whitelist = [front.URL];
 
-// Safe CORS config
 const corsOptions = {
-  origin: 'https://project-app-frontend-ivory.vercel.app',
-  credentials: true
-};
+  origin: function (origin, callback) {
+    if (whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}
 
-// Apply CORS
 app.use(cors(corsOptions));
 
-// Handle preflight OPTIONS requests globally
-app.options('*', cors(corsOptions));
-
-// API Routes
+// Routing 
 app.use('/api/users', userRouter);
 app.use('/api/projects', projectRouter);
 app.use('/api/tasks', taskRouter);
 
-// Start server
 const httpServer = app.listen(server.PORT, () => {
-  console.log(`Backend running on port ${server.PORT}`);
+  console.log(`Example app listening on port ${server.PORT}`)
 });
 
 // Socket.io
@@ -43,11 +41,9 @@ const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
     origin: front.URL,
-    credentials: true
-  }
+  },
 });
 
-// Socket.io events
 io.on('connection', (socket) => {
   socket.on('open project', (project) => {
     socket.join(project);
