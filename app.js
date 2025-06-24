@@ -18,16 +18,7 @@ const whitelist = [front.URL];
 
 // Safe CORS config
 const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow non-browser tools (Postman, curl) and whitelisted frontends
-    if (!origin || whitelist.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.error('Blocked by CORS:', origin);
-      callback(null, false); // Do not throw error
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  origin: 'https://project-app-frontend-ivory.vercel.app',
   credentials: true
 };
 
