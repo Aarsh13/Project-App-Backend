@@ -10,30 +10,41 @@ import { Server } from 'socket.io';
 const app = express();
 app.use(express.json());
 
+// Connect to DB
 connectDB();
 
-// CORS
+// Whitelist from config
 const whitelist = [front.URL];
 
+// Safe CORS config
 const corsOptions = {
   origin: function (origin, callback) {
-    if (whitelist.includes(origin)) {
+    // Allow non-browser tools (Postman, curl) and whitelisted frontends
+    if (!origin || whitelist.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      console.error('Blocked by CORS:', origin);
+      callback(null, false); // Do not throw error
     }
-  }
-}
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+};
 
+// Apply CORS
 app.use(cors(corsOptions));
 
-// Routing 
+// Handle preflight OPTIONS requests globally
+app.options('*', cors(corsOptions));
+
+// API Routes
 app.use('/api/users', userRouter);
 app.use('/api/projects', projectRouter);
 app.use('/api/tasks', taskRouter);
 
+// Start server
 const httpServer = app.listen(server.PORT, () => {
-  console.log(`Example app listening on port ${server.PORT}`)
+  console.log(`Backend running on port ${server.PORT}`);
 });
 
 // Socket.io
@@ -41,9 +52,11 @@ const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
     origin: front.URL,
-  },
+    credentials: true
+  }
 });
 
+// Socket.io events
 io.on('connection', (socket) => {
   socket.on('open project', (project) => {
     socket.join(project);
