@@ -50,7 +50,7 @@ export const sendConfirmationEmail = (email, link) => {
               </tr>
               <tr>
                 <td style="padding:10px 30px 30px 30px;background-color:#ffffff;">
-                  <h1 style="margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;">Welcome to TaskUnity!</h1>
+                  <h1 style="margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;">Welcome to Synkr!</h1>
                   <p style="margin:0;">Please click the button below to confirm your account:</p>
                 </td>
               </tr>
@@ -61,7 +61,7 @@ export const sendConfirmationEmail = (email, link) => {
               </tr>
               <tr>
                 <td style="padding:30px;text-align:center;font-size:12px;background-color:#222145;color:#FFFFFF;">
-                  <p style="margin:0;font-size:14px;">&reg; TaskUnity, 2025</p>
+                  <p style="margin:0;font-size:14px;">&reg; Synkr, 2025</p>
                 </td>
               </tr>
             </table>
@@ -74,9 +74,9 @@ export const sendConfirmationEmail = (email, link) => {
   `;
 
   const mailOptions = {
-    from: 'TaskUnity <info@taskunity.com>',
+    from: 'Synkr <info@Synkr.com>',
     to: email,
-    subject: 'TaskUnity - Account Confirmation',
+    subject: 'Synkr - Account Confirmation',
     html: htmlContent,
   };
 
@@ -144,7 +144,7 @@ export const sendResetPasswordEmail = (email, link) => {
               </tr>
               <tr>
                 <td style="padding:30px;text-align:center;font-size:12px;background-color:#222145;color:#FFFFFF;">
-                  <p style="margin:0;font-size:14px;">&reg; TaskUnity, 2023</p>
+                  <p style="margin:0;font-size:14px;">&reg; Synkr, 2023</p>
                 </td>
               </tr>
             </table>
@@ -157,9 +157,9 @@ export const sendResetPasswordEmail = (email, link) => {
   `;
 
   const mailOptions = {
-    from: 'TaskUnity <info@taskunity.com>',
+    from: 'Synkr <info@Synkr.com>',
     to: email,
-    subject: 'TaskUnity - Reset Your Password',
+    subject: 'Synkr - Reset Your Password',
     html: htmlContent,
   };
 
