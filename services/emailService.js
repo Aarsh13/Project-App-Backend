@@ -45,7 +45,7 @@ export const sendConfirmationEmail = (email, link) => {
             <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
               <tr>
                 <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;">
-                  <img src="https://github.com/Aarsh13/Project-App-Frontend/blob/master/public/Synkr-fav.png" width="165" alt="Logo" style="width:300px;max-width:80%;height:auto;">
+                  <img src="https://github.com/Aarsh13/Project-App-Frontend/blob/master/public/Synkr-fav.png?raw=true" width="165" alt="Logo" style="width:300px;max-width:80%;height:auto;">
                 </td>
               </tr>
               <tr>
@@ -128,7 +128,7 @@ export const sendResetPasswordEmail = (email, link) => {
             <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
               <tr>
                 <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;">
-                  <img src="https://github.com/Aarsh13/Project-App-Frontend/blob/master/public/Synkr-fav.png" width="165" alt="Logo" style="width:300px;max-width:80%;height:auto;">
+                  <img src="https://github.com/Aarsh13/Project-App-Frontend/blob/master/public/Synkr-fav.png?raw=true" width="165" alt="Logo" style="width:300px;max-width:80%;height:auto;">
                 </td>
               </tr>
               <tr>
